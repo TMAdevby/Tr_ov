@@ -1,4 +1,4 @@
-package bl_belt.Comparable;
+package bl_belt.ComparableComparator;
 
 import java.util.ArrayList;
 import java.util.Collections;
