@@ -1,6 +1,8 @@
 package bl_belt.Lambdas;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 
 public class StudentInfo {
 
@@ -49,6 +51,15 @@ class Test{
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
+        Collections.sort(students, new Comparator<Student>() {
+            @Override
+            public int compare(Student s1, Student s2) {
+                return s1.course - s2.course;
+            }
+        });
+        Collections.sort(students, (s1,s2) -> s1.course - s2.course );
+        System.out.println(students);
+
 
 //        info.testStudents(students, new CheckOverGrade());
 //        System.out.println("--------------------------------");
@@ -58,10 +69,22 @@ class Test{
 //                return s.age<30;
 //            }
 //        });
-        System.out.println("--------------------------------");
-        info.testStudents(students,(Student s) -> {return s.avgGrade > 8;});
-        System.out.println("--------------------------------");
-        info.testStudents(students,(Student s) -> {return s.age < 30;});
+
+
+//        System.out.println("--------------------------------");
+//        info.testStudents(students,(Student s) -> {return s.avgGrade > 8;});
+//        System.out.println("--------------------------------");
+//        info.testStudents(students,s -> s.avgGrade > 8.5);
+//
+//        StudentChecks sc = (Student s) -> {return s.avgGrade > 8;};
+//        info.testStudents(students,sc);
+//
+//        System.out.println("--------------------------------");
+//        info.testStudents(students,(Student s) -> {return s.age < 30;});
+//        System.out.println("--------------------------------");
+//        info.testStudents(students,(Student s) -> {return s.age > 20 && s.avgGrade < 9.3 && s.sex == 'f';});
+
+
 
 //        info.printStudentsOverGrade(students, 8);
 //        System.out.println("--------------------------------");
