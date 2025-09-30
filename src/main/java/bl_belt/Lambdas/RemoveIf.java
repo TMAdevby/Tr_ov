@@ -1,6 +1,7 @@
 package bl_belt.Lambdas;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 public class RemoveIf {
     public static void main(String[] args) {
@@ -11,7 +12,9 @@ public class RemoveIf {
         al.add("Uchim Java");
         al.add("A imenno lambdas");
 
-        al.removeIf(element -> element.length()<5);
+//        al.removeIf(element -> element.length()<5);
+        Predicate<String> p = element -> element.length()<5;
+        al.removeIf(p);
         System.out.println(al);
     }
 }

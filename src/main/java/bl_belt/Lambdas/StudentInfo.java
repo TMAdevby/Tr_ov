@@ -72,18 +72,19 @@ class Test{
 //        });
 
 
-        System.out.println("--------------------------------");
-        info.testStudents(students,(Student s) -> {return s.avgGrade > 8;});
-        System.out.println("--------------------------------");
-        info.testStudents(students,s -> s.avgGrade > 8.5);
+//        System.out.println("--------------------------------");
+//        info.testStudents(students,(Student s) -> {return s.avgGrade > 8;});
+//        System.out.println("--------------------------------");
+//        info.testStudents(students,s -> s.avgGrade > 8.5);
 
-//        StudentChecks sc = (Student s) -> {return s.avgGrade > 8;};
-//        info.testStudents(students,sc);
+        Predicate<Student> p1 =s -> s.avgGrade > 7.5;
+        Predicate<Student> p2 =s -> s.sex == 'm';
+        info.testStudents(students,p2);
 
-        System.out.println("--------------------------------");
-        info.testStudents(students,(Student s) -> {return s.age < 30;});
-        System.out.println("--------------------------------");
-        info.testStudents(students,(Student s) -> {return s.age > 20 && s.avgGrade < 9.3 && s.sex == 'f';});
+//        System.out.println("--------------------------------");
+//        info.testStudents(students,(Student s) -> {return s.age < 30;});
+//        System.out.println("--------------------------------");
+//        info.testStudents(students,(Student s) -> {return s.age > 20 && s.avgGrade < 9.3 && s.sex == 'f';});
 
 
 
