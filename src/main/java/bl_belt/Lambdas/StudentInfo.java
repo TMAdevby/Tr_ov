@@ -79,7 +79,9 @@ class Test{
 
         Predicate<Student> p1 =s -> s.avgGrade > 7.5;
         Predicate<Student> p2 =s -> s.sex == 'm';
-        info.testStudents(students,p2);
+        info.testStudents(students,p2.and(p1));
+        info.testStudents(students,p2.or(p1));
+        info.testStudents(students,p2.negate());
 
 //        System.out.println("--------------------------------");
 //        info.testStudents(students,(Student s) -> {return s.age < 30;});
