@@ -1,7 +1,7 @@
 package bl_belt.Lambdas;
 import java.util.ArrayList;
 import java.util.function.Supplier;
-
+import java.util.function.Consumer;
 public class Test3 {
     public static ArrayList<Car> createThreeCars(Supplier<Car> carSupplier){
         ArrayList<Car> al = new ArrayList<>();
@@ -11,9 +11,21 @@ public class Test3 {
         return al;
     }
 
+    public static void changeCar(Car car, Consumer<Car> carConsumer){
+        carConsumer.accept(car);
+    }
+
     public static void main(String[] args) {
         ArrayList<Car> ourCars = createThreeCars(() ->
                 new Car("Nissan Tiida", "Silver Metalic", 1.6));
+        System.out.println("Our cars: " + ourCars );
+
+        changeCar(ourCars.get(0)
+            , car -> {
+                car.color = "red";
+                car.engine = 2.4;
+                    System.out.println("upgraded car: " + car);
+                });
         System.out.println("Our cars: " + ourCars );
     }
 }
