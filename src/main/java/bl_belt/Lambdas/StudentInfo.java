@@ -3,6 +3,8 @@ package bl_belt.Lambdas;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.List;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class StudentInfo {
@@ -15,6 +17,7 @@ public class StudentInfo {
         }
     }
 
+    // без лямбда выражений
 //    void printStudentsOverGrade(ArrayList <Student> aL, double grade){
 //        for(Student s : aL){
 //            if(s.avgGrade > grade){
@@ -52,6 +55,8 @@ class Test{
         students.add(st5);
 
         StudentInfo info = new StudentInfo();
+
+        // компаратор через анонимный класс и лямбда выражение
 //        Collections.sort(students, new Comparator<Student>() {
 //            @Override
 //            public int compare(Student s1, Student s2) {
@@ -62,8 +67,10 @@ class Test{
 //        System.out.println(students);
 
 
+    //  через отдельный класс
 //        info.testStudents(students, new CheckOverGrade());
 //        System.out.println("--------------------------------");
+        // через анонимный класс
 //        info.testStudents(students, new StudentChecks() {
 //            @Override
 //            public boolean check(Student s) {
@@ -71,31 +78,50 @@ class Test{
 //            }
 //        });
 
-
+        // через лямбда выражение
 //        System.out.println("--------------------------------");
 //        info.testStudents(students,(Student s) -> {return s.avgGrade > 8;});
 //        System.out.println("--------------------------------");
 //        info.testStudents(students,s -> s.avgGrade > 8.5);
 
-        Predicate<Student> p1 =s -> s.avgGrade > 7.5;
-        Predicate<Student> p2 =s -> s.sex == 'm';
-        info.testStudents(students,p2.and(p1));
-        info.testStudents(students,p2.or(p1));
-        info.testStudents(students,p2.negate());
+        //через предикейт
+//        Predicate<Student> p1 =s -> s.avgGrade > 7.5;
+//        Predicate<Student> p2 =s -> s.sex == 'm';
+//        info.testStudents(students,p2.and(p1));
+//        info.testStudents(students,p2.or(p1));
+//        info.testStudents(students,p2.negate());
 
+        // через лямбда выражение
 //        System.out.println("--------------------------------");
 //        info.testStudents(students,(Student s) -> {return s.age < 30;});
 //        System.out.println("--------------------------------");
 //        info.testStudents(students,(Student s) -> {return s.age > 20 && s.avgGrade < 9.3 && s.sex == 'f';});
 
 
-
+    // без лямбда выражений
 //        info.printStudentsOverGrade(students, 8);
 //        System.out.println("--------------------------------");
 //        info.printStudentsUnderAge(students, 30);
 //        System.out.println("--------------------------------");
 //        info.printStudentsMixConditions(students, 20, 9.5, 'f');
+
+
+        // через фанкшн
+        Function<Student,Double> f = student -> student.avgGrade;
+        double res = avgOfSmth(students, stud -> stud.avgGrade);
+        System.out.println(res);
+
     }
+    // через фанкшн
+    private static double avgOfSmth(List<Student> list, Function<Student,Double> f){
+        double result = 0;
+        for(Student st : list){
+            result += f.apply(st);
+        }
+        result = result/ list.size();
+        return result;
+    }
+
 }
 //interface StudentChecks{
 //    boolean check(Student s);
