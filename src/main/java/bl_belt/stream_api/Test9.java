@@ -2,6 +2,7 @@ package bl_belt.stream_api;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class Test9 {
     public static void main(String[] args) {
@@ -23,7 +24,23 @@ public class Test9 {
         Student max = students.stream().max((x,y) -> x.getAge()- y.getAge()).get();
         System.out.println(max);*/
 
-        students.stream().filter(e -> e.getAge() > 20).limit(2)
+        /*students.stream().filter(e -> e.getAge() > 20).limit(2)
                 .forEach(System.out::println);
+        System.out.println("---------------------------");
+        students.stream().filter(e -> e.getAge() > 20).skip(2)
+                .forEach(System.out::println);*/
+
+        /*List<Integer> courses = students.stream()
+                .mapToInt(e1 -> e1.getCourse())
+                .boxed()
+                .collect(Collectors.toList());
+        System.out.println(courses);*/
+
+        int sum = students.stream().mapToInt(e1 -> e1.getCourse()).sum();
+        //System.out.println(sum);
+
+        double average = students.stream().mapToInt(e1 -> e1.getCourse())
+                .average().getAsDouble();
+        System.out.println(average);
     }
 }
