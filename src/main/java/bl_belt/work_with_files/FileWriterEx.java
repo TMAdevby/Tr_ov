@@ -11,7 +11,8 @@ public class FileWriterEx {
                 "Вот последняя правда открытая мной.";
         FileWriter writer = null;
         try{
-            writer = new FileWriter("C:\\Users\\Lenovo\\OneDrive\\Desktop\\text1.txt", true);
+            //writer = new FileWriter("C:\\Users\\Lenovo\\OneDrive\\Desktop\\text1.txt", true);
+            writer = new FileWriter("text2.txt");
             /*for(int i = 0; i<rubai.length(); i++){
                 writer.write(rubai.charAt(i));
             }*/
