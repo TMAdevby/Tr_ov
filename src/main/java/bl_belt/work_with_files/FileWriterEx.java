@@ -9,15 +9,16 @@ public class FileWriterEx {
                 "Непонятного нет для меня под луной.\n" +
                 "Мне известно что мне ничего не известно!\n" +
                 "Вот последняя правда открытая мной.\n";
+        String s = "privet";
         FileWriter writer = null;
         try{
             //writer = new FileWriter("C:\\Users\\Lenovo\\OneDrive\\Desktop\\text1.txt", true);
-            writer = new FileWriter("text2.txt",false);
+            writer = new FileWriter("text2.txt",true);
             /*for(int i = 0; i<rubai.length(); i++){
                 writer.write(rubai.charAt(i));
             }*/
-            writer.write(rubai);
-            writer.write("\n");
+            //writer.write(rubai);
+            writer.write(s);
             System.out.println("Done!");
         }   catch (IOException e){
             e.printStackTrace();
