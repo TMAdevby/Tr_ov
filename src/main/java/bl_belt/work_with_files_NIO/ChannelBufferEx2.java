@@ -27,10 +27,18 @@ public class ChannelBufferEx2 {
             while(buffer.hasRemaining()){
                 System.out.println((char) buffer.get());
             }
-
-
-
-
+            System.out.println("-------------------------------");
+            buffer.clear();
+            channel.read(buffer);
+            buffer.flip();
+            System.out.println((char) buffer.get());
+            buffer.mark();
+            System.out.println((char) buffer.get());
+            System.out.println((char) buffer.get());
+            buffer.reset();
+            while(buffer.hasRemaining()){
+                System.out.println((char) buffer.get());
+            }
 
 
 
