@@ -1,10 +1,12 @@
 package bl_belt.work_with_files_PathFiles;
 
+import java.io.IOException;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class PathAndFilesEx1 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         Path filePath = Paths.get("test15.txt");
         Path directoryPath = Paths.get("C:\\Users\\Lenovo\\OneDrive\\Desktop\\M");
 
@@ -40,5 +42,19 @@ public class PathAndFilesEx1 {
                 + directoryPath.relativize(anotherPath));
         System.out.println("--------------------------------------------------");
 
+        if(!Files.exists(filePath)){
+            Files.createFile(filePath);
+        }
+        if(!Files.exists(directoryPath)){
+            Files.createDirectory(directoryPath);
+        }
+
+        System.out.println("Files.isReadable(filePath) "
+                + Files.isReadable(filePath));
+        System.out.println("Files.isWritable(filePath) "
+                + Files.isWritable(filePath));
+        System.out.println("Files.isExecutable(filePath) "
+                + Files.isExecutable(filePath));
+        System.out.println("--------------------------------------------------");
     }
 }
