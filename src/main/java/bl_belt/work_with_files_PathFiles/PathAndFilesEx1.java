@@ -24,5 +24,21 @@ public class PathAndFilesEx1 {
         System.out.println("directoryPath.isAbsolute() " + directoryPath.isAbsolute());
         System.out.println("--------------------------------------------------");
 
+        System.out.println("filePath.toAbsolutePath() " + filePath.toAbsolutePath());
+        System.out.println("directoryPath.toAbsolutePath() " + directoryPath.toAbsolutePath());
+        System.out.println("--------------------------------------------------");
+
+        System.out.println("filePath.toAbsolutePath().getParent() "
+                + filePath.toAbsolutePath().getParent());
+        System.out.println("directoryPath.toAbsolutePath().getRoot() "
+                + directoryPath.toAbsolutePath().getRoot());
+        System.out.println("--------------------------------------------------");
+
+        Path anotherPath = Paths.get("C:\\Users\\Lenovo\\OneDrive\\Desktop"
+                +"\\M\\N\\Z\\test20.txt");
+        System.out.println("directoryPath.relativize(anotherPath) "
+                + directoryPath.relativize(anotherPath));
+        System.out.println("--------------------------------------------------");
+
     }
 }
