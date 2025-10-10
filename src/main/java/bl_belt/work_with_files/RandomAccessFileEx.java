@@ -1,12 +1,12 @@
 package bl_belt.work_with_files;
-
+import java.io.RandomAccessFile;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-public class RandomAccessFile {
+public class RandomAccessFileEx {
     public static void main(String[] args) {
-        try(java.io.RandomAccessFile file
-                    = new java.io.RandomAccessFile("test10.txt", "rw")){
+        try(RandomAccessFile file
+                    = new RandomAccessFile("test10.txt", "rw")){
 
             int a = file.read();
             System.out.println((char)a);
