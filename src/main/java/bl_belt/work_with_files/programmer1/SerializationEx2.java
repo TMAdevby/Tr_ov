@@ -22,3 +22,4 @@ public class SerializationEx2 {
         }
     }
 }
+// Employye emp = inputStream.readObject(); десериализация
