@@ -1,4 +1,4 @@
-package bl_belt.multithreading;
+package bl_belt.multithreading.o1_createThread;
 
 public class Ex4 {
     public static void main(String[] args) {

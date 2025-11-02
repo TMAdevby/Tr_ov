@@ -1,6 +1,6 @@
-package bl_belt.multithreading;
+package bl_belt.multithreading.o1_createThread;
 
-public class Ex2 extends Thread {
+public class Ex3 implements Runnable {
     public void run() {
         for (int i = 1; i <= 1000 ; i++) {
             System.out.println(i);
@@ -8,28 +8,22 @@ public class Ex2 extends Thread {
     }
 
     public static void main(String[] args) {
-
-        Ex2 thread1 = new Ex2();
+        Thread thread1 = new Thread(new Ex3());
         thread1.start();
 
-        for (int i = 1000; i > 0 ; i--) {
+        for (int i = 1000; i > 0; i--) {
             System.out.println(i);
         }
 
-
-
-
-
-////        MyThread1 myThread1 = new MyThread1();
-////        MyThread2 myThread2 = new MyThread2();
+//        Thread myThread3 = new Thread(new MyThread3());
+//        Thread myThread4 = new Thread(new MyThread4());
 //
-////        myThread1.start();
-////        myThread2.start();
-
+//        myThread3.start();
+//        myThread4.start();
     }
 }
 
-class MyThread1 extends Thread{
+class MyThread3 implements Runnable{
     public void run() {
         for (int i = 1; i <= 1000 ; i++) {
             System.out.println(i);
@@ -37,12 +31,10 @@ class MyThread1 extends Thread{
     }
 }
 
-class MyThread2 extends Thread{
+class MyThread4 implements Runnable{
     public void run() {
         for (int i = 1000; i > 0 ; i--) {
             System.out.println(i);
         }
     }
 }
-
-
