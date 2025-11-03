@@ -2,7 +2,7 @@ package bl_belt.multithreading.o3_vol_synchronized;
 
 public class Ex11 {
     static int counter = 0;
-    public static void increment(){
+    public static synchronized void increment(){
         counter++;
     }
 
