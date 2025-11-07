@@ -25,4 +25,32 @@ class Call{
             lock.unlock();
         }
     }
+
+    void skypeCall(){
+        lock.lock();
+        try{
+            System.out.println("Skype call starts");
+            Thread.sleep(5000);
+            System.out.println("Skype call ends");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            lock.unlock();
+        }
+    }
+
+    void whatsappCall(){
+        lock.lock();
+        try{
+            System.out.println("Whatsapp call starts");
+            Thread.sleep(5000);
+            System.out.println("Whatsapp call ends");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+        finally {
+            lock.unlock();
+        }
+    }
 }
