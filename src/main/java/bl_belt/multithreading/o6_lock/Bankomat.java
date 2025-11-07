@@ -33,7 +33,7 @@ class Employee extends Thread{
             throw new RuntimeException(e);
         }
         finally {
-            lock.lock();
+            lock.unlock();
         }
     }
 }
