@@ -5,7 +5,28 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class LockExample {
     public static void main(String[] args) {
-
+        Call call = new Call();
+        Thread thread1 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                call.mobileCall();
+            }
+        });
+        Thread thread2 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                call.skypeCall();
+            }
+        });
+        Thread thread3 = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                call.whatsappCall();
+            }
+        });
+        thread1.start();
+        thread2.start();
+        thread3.start();
     }
 }
 
@@ -44,7 +65,7 @@ class Call{
         lock.lock();
         try{
             System.out.println("Whatsapp call starts");
-            Thread.sleep(5000);
+            Thread.sleep(7000);
             System.out.println("Whatsapp call ends");
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
