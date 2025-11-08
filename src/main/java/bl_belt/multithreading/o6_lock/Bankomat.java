@@ -9,6 +9,11 @@ public class Bankomat {
         new Employee("Zaur", lock);
         new Employee("Oleg", lock);
         new Employee("Elena", lock);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
         new Employee("Viktor", lock);
         new Employee("Marina", lock);
     }
@@ -23,17 +28,21 @@ class Employee extends Thread{
         this.start();
     }
     public void run(){
-        try {
-        System.out.println(name + " ждет... ");
-        lock.lock();
-        System.out.println(name + " пользуется банкоматом... ");
-            Thread.sleep(2000);
-            System.out.println(name + " завершил свои дела ");
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        if(lock.tryLock()) {
+            try {
+//        System.out.println(name + " ждет... ");
+//        lock.lock();
+                System.out.println(name + " пользуется банкоматом... ");
+                Thread.sleep(2000);
+                System.out.println(name + " завершил свои дела ");
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            } finally {
+                lock.unlock();
+            }
         }
-        finally {
-            lock.unlock();
+        else {
+            System.out.println(name + " не хочет ждать очереди");
         }
     }
 }
