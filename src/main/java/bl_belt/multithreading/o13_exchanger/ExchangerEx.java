@@ -23,4 +23,9 @@ class BestFriend extends Thread{
         this.myActions = myActions;
         this.exchanger = exchanger;
     }
+
+    private void whoWins(Action myAction, Action friendsAction){
+        if((myAction == Action.KAMEN && friendsAction == Action.NOJNICI)
+        || )
+    }
 }
