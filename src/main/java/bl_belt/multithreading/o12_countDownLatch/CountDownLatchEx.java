@@ -26,8 +26,16 @@ public class CountDownLatchEx {
         System.out.println("countDownLatch = " + countDownLatch.getCount());
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
+        new Friend("Zaur", countDownLatch);
+        new Friend("Oleg", countDownLatch);
+        new Friend("Elena", countDownLatch);
+        new Friend("Viktor", countDownLatch);
+        new Friend("Marina", countDownLatch);
 
+        marketStaffIsOnPlace();
+        everythingIsReady();
+        openMarket();
     }
 }
 
@@ -37,5 +45,16 @@ class Friend extends Thread{
     public Friend(String name, CountDownLatch countDownLatch){
         this.name = name;
         this.countDownLatch = countDownLatch;
+        this.start();
+    }
+
+    @Override
+    public void run() {
+        try {
+            countDownLatch.await();
+            System.out.println(name + " приступил(а) к закупкам");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
