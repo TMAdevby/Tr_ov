@@ -1,6 +1,7 @@
 package bl_belt.multithreading.o15_synchronizedCollection;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -11,11 +12,13 @@ public class SynchronizedCollectionEx2 {
         for (int i = 0; i < 1000; i++) {
             arrayList.add(i);
         }
-        List<Integer> synchList = new ArrayList<>();
+        List<Integer> synchList = Collections.synchronizedList(arrayList);
         Runnable runnable1 = () -> {
-            Iterator<Integer> iterator = synchList.iterator();
-            while (iterator.hasNext()){
-                System.out.println(iterator.next());
+            synchronized (synchList) {
+                Iterator<Integer> iterator = synchList.iterator();
+                while (iterator.hasNext()) {
+                    System.out.println(iterator.next());
+                }
             }
         };
         Runnable runnable2 = () ->
@@ -26,8 +29,6 @@ public class SynchronizedCollectionEx2 {
         thread2.start();
         thread1.join();
         thread2.join();
-        System.out.println(arrayList);
+        System.out.println(synchList);
     }
-
-
 }
