@@ -11,7 +11,5 @@ public class ArrayBlockingQueueEx1 {
         queue.add(4);
         queue.offer(5);
         System.out.println(queue);
-
-
     }
 }
