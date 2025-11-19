@@ -3,10 +3,11 @@ package bl_belt.multithreading.o16_concurentHashMap;
 import javax.swing.text.html.HTMLDocument;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class ConcurrentHashMapEx {
     public static void main(String[] args) throws InterruptedException {
-        HashMap<Integer, String> map = new HashMap<>();
+        ConcurrentHashMap<Integer, String> map = new ConcurrentHashMap<>();
         map.put(1,"Zaur");
         map.put(2,"Oleg");
         map.put(3,"Sergey");
