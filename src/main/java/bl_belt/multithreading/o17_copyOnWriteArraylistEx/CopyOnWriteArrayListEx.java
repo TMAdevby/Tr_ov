@@ -15,8 +15,17 @@ public class CopyOnWriteArrayListEx {
 
         Runnable runnable1 = () -> {
             Iterator<String> iterator = list.iterator();
+            while (iterator.hasNext()){
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                System.out.println(iterator.next());
+            }
+        };
 
-        }
+
 
     }
 }
