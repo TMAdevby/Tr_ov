@@ -13,8 +13,24 @@ public class ArrayBlockingQueueEx2 {
             while (true){
                 try {
                     arrayBlockingQueue.put(++i);
-                    System.out.println("Producer dobavil: " + i);
-                    Thread.sleep(1000);
+                    System.out.println("Producer dobavil: " + i + " "
+                            + arrayBlockingQueue);
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
+        //Consumer
+        new Thread(() -> {
+            int i = 0;
+            while (true){
+                try {
+                    Integer j = arrayBlockingQueue.take();
+                    System.out.println("Consumer zabral: " + j + " "
+                    + arrayBlockingQueue);
+                    Thread.sleep(9000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
