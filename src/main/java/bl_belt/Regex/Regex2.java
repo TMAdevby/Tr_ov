@@ -18,8 +18,35 @@ public class Regex2 {
 //        String s1 = "abcd abce abc5abcg6abch";
 //        Pattern pattern1 = Pattern.compile("abc[^e-g4-7]");
 
-        String s1 = "abcd abce abc5abcg6abch";
-        Pattern pattern1 = Pattern.compile("abc(e|5)");
+//        String s1 = "abcd abce abc5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("abc(e|5)");
+
+//        String s1 = "abcd abce abc5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("abc.");
+
+//        String s1 = "abcd abce abc5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("^abc");
+
+//        String s1 = "abcd abce abc5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("5abcg6abch$");
+
+//        String s1 = "abcd abce abc5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("\\d");
+
+//        String s1 = "abcd abce abc5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("\\D");
+
+//        String s1 = "abcd abce abc5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("\\w");
+
+//        String s1 = "abcd abce abc5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("\\w+");
+
+//        String s1 = "abcd!?abce====abc ++5abcg6abch";
+//        Pattern pattern1 = Pattern.compile("\\W+");
+
+        String s1 = "poka abc Zaur dom kino";
+        Pattern pattern1 = Pattern.compile("\\w{4}");
 
         Matcher mather = pattern1.matcher(s1);
         while (mather.find()){
