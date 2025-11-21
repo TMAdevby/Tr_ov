@@ -13,11 +13,15 @@ public class Redex5 {
     // 03/25 1234 5678 9123 4567 (987)
     Pattern pattern =
             Pattern.compile("(\\d{4})(\\d{4})(\\d{4})(\\d{4})(\\d{2})(\\d{2})(\\d{3})");
-    Matcher mather = pattern.matcher(myString);
+    Matcher matcher = pattern.matcher(myString);
 
-    String myNewString = mather.replaceAll
+    String myNewString = matcher.replaceAll
             ("$5/$6 $1 $2 $3 $4 ($7)");
     System.out.println(myNewString);
+
+    while (matcher.find()){
+        System.out.println(matcher.group(7));
+    }
 
     }
 }
