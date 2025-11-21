@@ -1,5 +1,7 @@
 package bl_belt.Regex;
 
+import java.util.Arrays;
+
 public class Regex3 {
     public static void main(String[] args) {
         String s
@@ -12,5 +14,8 @@ public class Regex3 {
         String s2 = "chuck@gmail.com";
         boolean result = s2.matches("\\w+@\\w+\\.(com|ru)");
         System.out.println(result);
+
+        String[] array = s.split(" ");
+        System.out.println(Arrays.toString(array));
     }
 }
