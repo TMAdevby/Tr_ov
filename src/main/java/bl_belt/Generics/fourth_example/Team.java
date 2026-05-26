@@ -19,7 +19,7 @@ public class Team <T extends Participant>{// теперь в команду scho
                 " po imeni " + participant.getName());
     }
 
-    public void playWith(Team  team){  // теперь мы можем играть только с той командой какой являемся сами
+    public void playWith(Team <T> team){  // теперь мы можем играть только с той командой какой являемся сами
         String winnerName;
         Random random = new Random();
         int i = random.nextInt(2);

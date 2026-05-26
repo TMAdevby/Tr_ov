@@ -14,6 +14,7 @@ public class Test {
         Team<Schoolar> schoolarTeam = new Team<>("Drakoni");
         Team<Student> studentTeam = new Team<>("Vpered!");
         Team<Employee> employeeTeam = new Team<>("Rabotygi");
+
         schoolarTeam.addNewParticipant(schoolar1);
         schoolarTeam.addNewParticipant(schoolar2);
         studentTeam.addNewParticipant(student1);
@@ -26,7 +27,7 @@ public class Test {
         Schoolar schoolar4 = new Schoolar("Olya", 14);
         schoolarTeam2.addNewParticipant(schoolar3);
         schoolarTeam2.addNewParticipant(schoolar4);
-        schoolarTeam.playWith(employeeTeam);
+        schoolarTeam.playWith(schoolarTeam2);
 
         /*Team<Participant> partTeam3 = new Team<>("Mudreci");
         partTeam3.addNewParticipant(schoolar1);

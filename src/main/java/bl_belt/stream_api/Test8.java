@@ -32,7 +32,7 @@ public class Test8 {
 
 
         Map<Boolean, List<Student>> map = students.stream()
-                .collect(Collectors.partitioningBy(el -> el.getCourse() >7));
+                .collect(Collectors.partitioningBy(el -> el.getAvgGrade() >7));
 
         for(Map.Entry<Boolean, List<Student>> entry: map.entrySet()){
             System.out.println(entry.getKey() + ": " + entry.getValue().toString());

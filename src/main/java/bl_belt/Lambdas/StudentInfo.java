@@ -17,6 +17,15 @@ public class StudentInfo {
         }
     }
 
+    // через StudentChecks через отдельный класс и через анонимный класс и через лямбда
+   /* void testStudents(ArrayList<Student>al,StudentChecks sc){
+        for(Student s: al){
+            if(sc.check(s)){
+                System.out.println(s);
+            }
+        }
+    }*/
+
     // без лямбда выражений
 //    void printStudentsOverGrade(ArrayList <Student> aL, double grade){
 //        for(Student s : aL){
@@ -56,6 +65,35 @@ class Test{
 
         StudentInfo info = new StudentInfo();
 
+        // без лямбда выражений
+//        info.printStudentsOverGrade(students, 8);
+//        System.out.println("--------------------------------");
+//        info.printStudentsUnderAge(students, 30);
+//        System.out.println("--------------------------------");
+//        info.printStudentsMixConditions(students, 20, 9.5, 'f');
+
+        //  через отдельный класс
+//        info.testStudents(students, new CheckOverGrade());
+//        System.out.println("--------------------------------");
+
+        // через анонимный класс
+//        info.testStudents(students, new StudentChecks() {
+//            @Override
+//            public boolean check(Student s) {
+//                return s.age<30;
+//            }
+//        });
+
+        // через лямбда выражение
+        // что бы работало коментируем Predicate, иначе не совместимость
+        /*System.out.println("--------------------------------");
+        info.testStudents(students,(Student p) -> {return p.avgGrade > 8;});
+        System.out.println("--------------------------------");
+        info.testStudents(students,p -> p.age > 30);
+        System.out.println("--------------------------------");
+        info.testStudents(students,p -> p.age > 20 && p.avgGrade<9.3 && p.sex == 'f');*/
+
+
         // компаратор через анонимный класс и лямбда выражение
 //        Collections.sort(students, new Comparator<Student>() {
 //            @Override
@@ -67,43 +105,12 @@ class Test{
 //        System.out.println(students);
 
 
-    //  через отдельный класс
-//        info.testStudents(students, new CheckOverGrade());
-//        System.out.println("--------------------------------");
-        // через анонимный класс
-//        info.testStudents(students, new StudentChecks() {
-//            @Override
-//            public boolean check(Student s) {
-//                return s.age<30;
-//            }
-//        });
-
-        // через лямбда выражение
-//        System.out.println("--------------------------------");
-//        info.testStudents(students,(Student s) -> {return s.avgGrade > 8;});
-//        System.out.println("--------------------------------");
-//        info.testStudents(students,s -> s.avgGrade > 8.5);
-
-        //через предикейт
-//        Predicate<Student> p1 =s -> s.avgGrade > 7.5;
-//        Predicate<Student> p2 =s -> s.sex == 'm';
-//        info.testStudents(students,p2.and(p1));
-//        info.testStudents(students,p2.or(p1));
-//        info.testStudents(students,p2.negate());
-
-        // через лямбда выражение
-//        System.out.println("--------------------------------");
-//        info.testStudents(students,(Student s) -> {return s.age < 30;});
-//        System.out.println("--------------------------------");
-//        info.testStudents(students,(Student s) -> {return s.age > 20 && s.avgGrade < 9.3 && s.sex == 'f';});
-
-
-    // без лямбда выражений
-//        info.printStudentsOverGrade(students, 8);
-//        System.out.println("--------------------------------");
-//        info.printStudentsUnderAge(students, 30);
-//        System.out.println("--------------------------------");
-//        info.printStudentsMixConditions(students, 20, 9.5, 'f');
+        //через предикейт , сам предикейт импортируем
+        Predicate<Student> p1 =s -> s.avgGrade > 7.5;
+        Predicate<Student> p2 =s -> s.sex == 'm';
+        info.testStudents(students,p2.and(p1));
+        info.testStudents(students,p2.or(p1));
+        info.testStudents(students,p2.negate());
 
 
         // через фанкшн
@@ -123,13 +130,16 @@ class Test{
     }
 
 }
-//interface StudentChecks{
-//    boolean check(Student s);
-//}
 
-//class CheckOverGrade implements StudentChecks{
-//    @Override
-//    public boolean check(Student s) {
-//        return s.avgGrade > 8;
-//    }
-//}
+// через StudentChecks
+interface StudentChecks{
+    boolean check(Student s);
+}
+
+// через отдельный класс реализующий StudentChecks
+class CheckOverGrade implements StudentChecks{
+    @Override
+    public boolean check(Student s) {
+        return s.avgGrade > 8;
+    }
+}
