@@ -12,13 +12,13 @@ public class FileWriterEx {
         String s = "privet";
         FileWriter writer = null;
         try{
-            //writer = new FileWriter("C:\\Users\\Lenovo\\OneDrive\\Desktop\\text1.txt", true);
-            writer = new FileWriter("text2.txt",true);
-            /*for(int i = 0; i<rubai.length(); i++){
+            writer = new FileWriter("C:\\Users\\mtipu\\OneDrive\\Desktop\\text1.txt", true);
+            //writer = new FileWriter("text2.txt",true);
+            for(int i = 0; i<rubai.length(); i++){
                 writer.write(rubai.charAt(i));
-            }*/
+            }
             //writer.write(rubai);
-            writer.write(s);
+           // writer.write(s);
             System.out.println("Done!");
         }   catch (IOException e){
             e.printStackTrace();
