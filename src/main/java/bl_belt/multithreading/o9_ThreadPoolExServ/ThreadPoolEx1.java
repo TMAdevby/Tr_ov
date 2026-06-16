@@ -6,8 +6,8 @@ import java.util.concurrent.TimeUnit;
 
 public class ThreadPoolEx1 {
     public static void main(String[] args) throws InterruptedException {
-//        ExecutorService executorService = Executors.newFixedThreadPool(5);
-        ExecutorService executorService = Executors.newSingleThreadExecutor();
+        ExecutorService executorService = Executors.newFixedThreadPool(5);
+      //  ExecutorService executorService = Executors.newSingleThreadExecutor();
         for (int i = 0; i < 10; i++) {
             executorService.execute(new RunnableImpl100());
         }
