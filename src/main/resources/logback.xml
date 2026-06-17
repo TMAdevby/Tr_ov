@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+
+    <!-- 🔹 Формат вывода: время | уровень | класс | сообщение -->
+    <property name="LOG_PATTERN"
+              value="%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"/>
+
+    <!-- 🔹 Логи в КОНСОЛЬ (для разработки) -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 🔹 Логи в ФАЙЛ (для продакшена) -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/install.log</file>  <!-- Путь к файлу -->
+        <append>true</append>           <!-- Дописывать, а не перезаписывать -->
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 🔹 РОТАЦИЯ: когда файл > 10MB — создать новый, старые архивировать -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/app.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!-- Ежедневная ротация + архивация -->
+            <fileNamePattern>logs/app.%d{yyyy-MM-dd}.%i.log.gz</fileNamePattern>
+            <maxHistory>30</maxHistory> <!-- Хранить 30 дней -->
+            <timeBasedFileNamingAndTriggeringPolicy
+                    class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>10MB</maxFileSize> <!-- Или когда файл > 10MB -->
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+        <encoder>
+            <pattern>${LOG_PATTERN}</pattern>
+        </encoder>
+    </appender>
+
+    <!-- 🔹 Настройки для ВСЕГО приложения -->
+    <root level="INFO">  <!-- Минимальный уровень: DEBUG, INFO, WARN, ERROR -->
+        <appender-ref ref="CONSOLE"/>      <!-- Пишем в консоль -->
+        <appender-ref ref="ROLLING_FILE"/> <!-- И в файл с ротацией -->
+    </root>
+
+    <!-- 🔹 Отдельные настройки для твоего пакета (можно сделать более подробные) -->
+    <logger name="com.example.FilesIO" level="DEBUG" additivity="false">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
+</configuration>
