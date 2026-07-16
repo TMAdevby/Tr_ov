@@ -9,7 +9,7 @@ public class AtomicIntegerEx {
     public static void increment(){
 //        counter++;
 //        counter.incrementAndGet();
-        counter.addAndGet(5);
+        counter.addAndGet(4);
     }
 
     public static void main(String[] args) throws InterruptedException {

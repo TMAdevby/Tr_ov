@@ -15,7 +15,7 @@ public class ArrayBlockingQueueEx2 {
                     arrayBlockingQueue.put(++i);
                     System.out.println("Producer dobavil: " + i + " "
                             + arrayBlockingQueue);
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -30,7 +30,7 @@ public class ArrayBlockingQueueEx2 {
                     Integer j = arrayBlockingQueue.take();
                     System.out.println("Consumer zabral: " + j + " "
                     + arrayBlockingQueue);
-                    Thread.sleep(9000);
+                    Thread.sleep(2000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
