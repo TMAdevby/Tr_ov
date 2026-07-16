@@ -1,7 +1,9 @@
 package bl_belt.Reflection;
 
+import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
 import java.util.Arrays;
 
 public class Ex1 {
@@ -37,6 +39,7 @@ public class Ex1 {
         System.out.println("Return type of method setSalary = "
                 + someMethod2.getReturnType() + ", parameter types = " +
                 Arrays.toString(someMethod2.getParameterTypes()));
+        System.out.println("********");
 
         Method[] methods = employeeClass.getMethods();
         for(Method method: methods){
@@ -45,5 +48,29 @@ public class Ex1 {
                     ", parameter types = " +
                     Arrays.toString(method.getParameterTypes()));
         }
+        System.out.println("********");
+
+        Method[] allMethods = employeeClass.getDeclaredMethods();
+        for(Method method: allMethods){
+            System.out.println("Name of method = " + method.getName() +
+                    ", return type = " + method.getReturnType() +
+                    ", parameter types = " +
+                    Arrays.toString(method.getParameterTypes()));
+        }
+        System.out.println("********");
+
+        Method[] allMethods2 = employeeClass.getDeclaredMethods();
+        for(Method method: allMethods){
+            if(Modifier.isPublic(method.getModifiers()))
+            System.out.println("Name of method = " + method.getName() +
+                    ", return type = " + method.getReturnType() +
+                    ", parameter types = " +
+                    Arrays.toString(method.getParameterTypes()));
+        }
+        System.out.println("********");
+
+        Constructor constructor1 = employeeClass.getConstructor();
+        System.out.println();
+
     }
 }
