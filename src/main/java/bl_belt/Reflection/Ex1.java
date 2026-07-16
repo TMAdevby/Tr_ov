@@ -23,7 +23,7 @@ public class Ex1 {
         for(Field field : allFields){
             System.out.println("Type of " + field.getName() + " = " + field.getType());
         }
-
+        System.out.println("------------------------------------");
 
     }
 }
