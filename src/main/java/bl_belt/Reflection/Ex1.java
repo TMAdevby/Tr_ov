@@ -70,7 +70,24 @@ public class Ex1 {
         System.out.println("********");
 
         Constructor constructor1 = employeeClass.getConstructor();
-        System.out.println();
+        System.out.println("Constructor has " + constructor1.getParameterCount() +
+                " parameters, their types are: " +
+                Arrays.toString(constructor1.getParameterTypes()));
+        System.out.println("********");
+
+        Constructor constructor2 = employeeClass.getConstructor(int.class, String.class ,String.class);
+        System.out.println("Constructor has " + constructor2.getParameterCount() +
+                " parameters, their types are: " +
+                Arrays.toString(constructor2.getParameterTypes()));
+        System.out.println("********");
+
+        Constructor[] constructors = employeeClass.getConstructors();
+        for(Constructor constructor : constructors){
+            System.out.println("Constructor " + constructor.getName() +
+                    " has " + constructor.getParameterCount() +
+                    " parameters, their types are: " +
+                    Arrays.toString(constructor.getParameterTypes()));
+        }
 
     }
 }
