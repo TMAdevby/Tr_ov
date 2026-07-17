@@ -6,6 +6,7 @@ public class SemaphoreEx {
     public static void main(String[] args) {
         Semaphore callBox = new Semaphore(2);
 
+
         new Person("Zaur",callBox);
         new Person("Oleg",callBox);
         new Person("Elena",callBox);
